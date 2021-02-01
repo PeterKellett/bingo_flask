@@ -1,0 +1,9 @@
+body {
+    max-height: 100vH;
+}
+
+img {
+    border: 2px solid red;
+    margin: 5px;
+    
+}

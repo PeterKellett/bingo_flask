@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid">       
+        <div class="row">
+            {% for x in number_list %}
+                <div class="col-3">
+                    <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/amelia_earhart.JPG') }}" alt="">
+                </div>  
+            {% endfor %}
+        </div>        
+    </div>
+{% endblock %}
