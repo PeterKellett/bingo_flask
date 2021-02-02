@@ -3,14 +3,30 @@ body {
 }
 
 img {
-    border: 2px solid red;
-    margin: 5px;
     
+    margin: 5px;   
+}
+
+.red-border {
+    border: 2px solid red; 
+}
+
+.yellow-background {
+    border: 2px solid green;
 }
 
 .badge {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 5px;
     background-color: grey;
+}
+
+.badge span {
+    float: right;
+    display: none;
+}
+
+.score {
+    background-color: green;
 }

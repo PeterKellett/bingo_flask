@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container-fluid">       
+    <div class="container-fluid">
         <div class="row">
-            {% for x in number_list %}
-                {% if x %5 == 0 %}             
-                    <div class="row">
-                        <div class="col">
-                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
-                        </div>       
-                        <div class="col">
-                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
-                        </div> 
-                        <div class="col">
-                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
-                        </div>       
-                        <div class="col">
-                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
-                        </div> 
-                        <div class="col">
-                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
-                        </div> 
-                    </div>               
-                {% endif %}          
-            {% endfor %}
-        </div>        
+            <div class="col-10">
+                {% for y in range(5) %}
+                    <div class="row">            
+                        {% for x in range(5) %}                                        
+                            <div class="col">
+                                <img class="d-block mx-auto img-fluid" id="{{ x }}_{{ y }}" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
+                            </div>                                                 
+                        {% endfor %}                      
+                    </div>    
+                {% endfor %}    
+            </div>
+            <div class="col-2">
+                <div class="badge bg-success">Horizontal line</div>
+                <div class="badge bg-success">Vertical line</div>
+                <div class="badge bg-success">Diagonal /</div>
+                <div class="badge bg-success">Diagonal \</div>
+                <div class="badge bg-success">4 corners</div>
+                <div class="badge bg-success">X</div>
+                <div class="badge bg-success">BINGO!</div>
+            </div>
+        </div>    
+        
     </div>
 {% endblock %}
