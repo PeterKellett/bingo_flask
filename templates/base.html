@@ -85,15 +85,16 @@
 
 
             var numbers_clicked = []; 
-            score = [];          
+            var score = 0;  
+            $('#score').html(score); 
+            horizontal_done = $('.horizontal').attr('done');
+            vertical_done = $('.vertical').attr('done');
+            right_diagonal_done = $('.right_diagonal').attr('done');
+            left_diagonal_done = $('.left_diagonal').attr('done');
+            four_corners_done = $('.four_corners').attr('done');
+            cross_done = $('.cross').attr('done');
+            bingo_done = $('.bingo').attr('done');       
             $('img').click(function() {
-                horizontal_done = $('.horizontal').attr('done');
-                vertical_done = $('.vertical').attr('done');
-                right_diagonal_done = $('.right_diagonal').attr('done');
-                left_diagonal_done = $('.left_diagonal').attr('done');
-                four_corners_done = $('.four_corners').attr('done');
-                cross_done = $('.cross').attr('done');
-                bingo_done = $('.bingo').attr('done');
                 row_0 = [];
                 row_1 = [];
                 row_2 = [];
@@ -213,6 +214,9 @@
                             $('.row_0_col_2').addClass('yellow-background');
                             $('.row_0_col_3').addClass('yellow-background');
                             $('#horizontal').show();
+                            score += 1;
+                            $('#score').html(score);
+                            horizontal_done = 'true';
                         }                        
                         if (row_1.length == 4) {
                             $('.row_1_col_0').addClass('yellow-background');
@@ -220,6 +224,9 @@
                             $('.row_1_col_2').addClass('yellow-background');
                             $('.row_1_col_3').addClass('yellow-background');
                             $('#horizontal').show();
+                            score += 1;
+                            $('#score').html(score);
+                            horizontal_done = 'true';
                         }                        
                         if (row_2.length == 4) {
                             $('.row_2_col_0').addClass('yellow-background');
@@ -227,6 +234,9 @@
                             $('.row_2_col_2').addClass('yellow-background');
                             $('.row_2_col_3').addClass('yellow-background');
                             $('#horizontal').show();
+                            score += 1;
+                            $('#score').html(score);
+                            horizontal_done = 'true';
                         }
                         if (row_3.length == 4) {
                             $('.row_3_col_0').addClass('yellow-background');
@@ -234,6 +244,9 @@
                             $('.row_3_col_2').addClass('yellow-background');
                             $('.row_3_col_3').addClass('yellow-background');
                             $('#horizontal').show();
+                            score += 1;
+                            $('#score').html(score);
+                            horizontal_done = 'true';
                         }
                     }
                         
@@ -244,6 +257,9 @@
                             $('.row_2_col_0').addClass('yellow-background');
                             $('.row_3_col_0').addClass('yellow-background');
                             $('#vertical').show();
+                            score += 1;
+                            $('#score').html(score);
+                            vertical_done = 'true';
                         }                    
                         if (col_1.length == 4) {
                             $('.row_0_col_1').addClass('yellow-background');
@@ -251,6 +267,9 @@
                             $('.row_2_col_1').addClass('yellow-background');
                             $('.row_3_col_1').addClass('yellow-background');
                             $('#vertical').show();
+                            score += 1;
+                            $('#score').html(score);
+                            vertical_done = 'true';
                         }
                         if (col_2.length == 4) {
                             $('.row_0_col_2').addClass('yellow-background');
@@ -258,6 +277,9 @@
                             $('.row_2_col_2').addClass('yellow-background');
                             $('.row_3_col_2').addClass('yellow-background');
                             $('#vertical').show();
+                            score += 1;
+                            $('#score').html(score);
+                            vertical_done = 'true';
                         }
                         if (col_3.length == 4) {
                             $('.row_0_col_3').addClass('yellow-background');
@@ -265,10 +287,12 @@
                             $('.row_2_col_3').addClass('yellow-background');
                             $('.row_3_col_3').addClass('yellow-background');
                             $('#vertical').show();
+                            score += 1;
+                            $('#score').html(score);
+                            vertical_done = 'true';
                         }
                     }
-                        
-                
+                                       
                     if (left_diagonal_done != 'true') {
                         if (left_diagonal.length == 4) {
                             $('.row_0_col_0').addClass('yellow-background');
@@ -276,6 +300,9 @@
                             $('.row_2_col_2').addClass('yellow-background');
                             $('.row_3_col_3').addClass('yellow-background');
                             $('#left_diagonal').show();
+                            score += 3;
+                            $('#score').html(score);
+                            left_diagonal_done = 'true';
                         }   
                     }
                     
@@ -286,6 +313,9 @@
                             $('.row_2_col_1').addClass('yellow-background');
                             $('.row_3_col_0').addClass('yellow-background');
                             $('#right_diagonal').show();
+                            score += 3;
+                            $('#score').html(score);
+                            right_diagonal_done = 'true';
                         }
                     }
                     
@@ -296,6 +326,10 @@
                             $('.row_3_col_0').addClass('yellow-background');
                             $('.row_3_col_3').addClass('yellow-background');
                             $('#four_corners').show();
+                            score += 3;
+                            $('#score').html(score);
+                            four_corners_done = 'true';
+
                         }
                     }
 
@@ -310,6 +344,9 @@
                             $('.row_2_col_1').addClass('yellow-background');
                             $('.row_3_col_0').addClass('yellow-background');
                             $('#cross').show();
+                            score += 5;
+                            $('#score').html(score);
+                            cross_done = 'true';
                         }
                     }
 
@@ -318,10 +355,12 @@
                         if (numbers_clicked.length == 16) {
                             $('.col').addClass('yellow-background');
                             $('#bingo').show();
+                            score += 6;
+                            $('#score').html(score);
+                            bingo_done = 'true';
                         }
                     }
-                    
-                    
+                                        
                     //console.log("row_0=" + row_0);
                     //console.log("row_1=" + row_1);
                     //console.log("row_2=" + row_2);
@@ -336,10 +375,8 @@
                     //console.log("cross=" + cross);
                     
                 }
-        })
-            
-
-    });
+            })
+        });
     </script>
 </body>
 

@@ -27,6 +27,17 @@ img {
     display: none;
 }
 
-.score {
-    background-color: green;
+.outer-score {
+    background-color: #fafafa;
+    height: 100px;
+    width: 100%;
+    border-radius: 50px;
+    border: 10px solid green;
+    text-align: center;
+}
+
+.outer-score p {
+    color: green;
+    font-size: 3rem;
+    font-weight: 700;
 }
