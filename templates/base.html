@@ -63,10 +63,56 @@
         $(document).ready(function(){
             console.log("Document ready");
             $(".flashes").fadeOut("slow");
+            // screen size script
             var txt = "";
             txt += "Width: " + $("body").outerWidth() + "</br>";
             txt += "Height: " + $("body").outerHeight();
             $("#div1").html(txt);
+
+            $('.badge').click(function(){
+                $(this).toggleClass('bg-success');
+            });
+
+            var numbers_clicked = [];
+            
+            r2 = [];
+            r3 = [];
+            r4 = [];
+            $('img').click(function() {
+                r1 = [];
+                var clicked = $(this).attr("clicked");
+                var image_clicked = parseInt($(this).attr("id"));              
+                if (clicked == 'true') {
+                    $(this).attr('clicked', 'false');
+                    $(this).fadeTo(1000, 1.0);
+                    numbers_clicked.forEach(remove_from_numbers_clicked);                    
+                }
+                else {
+                    $(this).attr('clicked', 'true')               
+                    $(this).fadeTo(1000, 0.4);
+                    numbers_clicked.push(image_clicked);
+                    numbers_clicked.sort(function(a, b){return a - b});
+                }
+                numbers_clicked.forEach(check_card);
+                
+                function remove_from_numbers_clicked(value, index, array) {
+                    if (value == image_clicked) {
+                        numbers_clicked.splice(index, 1);
+                    }
+                }
+
+                function check_card(value, index, array) {
+                    if (value %4 == 0) {
+                        console.log("yes");
+                        r1.push(1);
+                        console.log(r1);
+                    }
+                    else {
+                        console.log("no");
+                    }
+                }
+        })
+            
 
     });
     </script>

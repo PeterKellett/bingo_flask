@@ -21,7 +21,7 @@ def index():
 @app.route("/page_2")
 def page_2():
     # flash("Button clicked")
-    cards = 25
+    cards = 16
     x = 0
     number_list = []
     while x < cards:

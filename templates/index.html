@@ -3,9 +3,25 @@
     <div class="container-fluid">       
         <div class="row">
             {% for x in number_list %}
-                <div class="col-3">
-                    <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/amelia_earhart.JPG') }}" alt="">
-                </div>  
+                {% if x %5 == 0 %}             
+                    <div class="row">
+                        <div class="col">
+                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
+                        </div>       
+                        <div class="col">
+                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
+                        </div> 
+                        <div class="col">
+                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
+                        </div>       
+                        <div class="col">
+                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
+                        </div> 
+                        <div class="col">
+                            <img class="d-block mx-auto img-fluid" src="{{ url_for('static', filename='images/beyonce_knowles-carter.JPG') }}" alt="">
+                        </div> 
+                    </div>               
+                {% endif %}          
             {% endfor %}
         </div>        
     </div>
