@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 {% block content %} 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-10">
-                {% for y in range(4) %}
-                    <div class="row">
-                        {% for x in range(4) %}
-                        <div class="col row_{{ y }}_col_{{ x }}">
-                            <img class="d-block mx-auto img-fluid red-border" id="{{ x }}_{{ y }}" src="{{ url_for('static', filename='images/amelia_earhart.JPG') }}" alt="">
-                        </div>                     
-                        {% endfor %}
-                    </div>
-                {% endfor %}
+                {% for y in range(5) %}
+                    <div class="row">            
+                        {% for x in range(5) %}                                        
+                            <div class="col">
+                                <img class="d-block mx-auto img-fluid red-border" id="{{ x }}_{{ y }}" src="https://res.cloudinary.com/dfboxofas/image/upload/v1612351323/bingo/ladies/jk_rowling_ubdszf.jpg" alt="">
+                            </div>                                                 
+                        {% endfor %}                      
+                    </div>    
+                {% endfor %}    
             </div>
             <div class="col-2">
-                <div class="badge bg-success horizontal">Horizontal line  --<span id="horizontal">(1)</span></div>
-                <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>
-                <div class="badge bg-success right_diagonal">Diagonal right  /<span id="right_diagonal">(3)</span></div>
-                <div class="badge bg-success left_diagonal">Diagonal left  \<span id="left_diagonal">(3)</span></div>
-                <div class="badge bg-success four_corners">4 corners  ::<span id="four_corners">(3)</span></div>
-                <div class="badge bg-success cross">X<span id="cross">(5)</span></div>
-                <div class="badge bg-success bingo">BINGO!<span id="bingo">(6)</span></div>
-                <div class="outer-score"><p id="score"></p></div>
+                <div class="badge bg-success">Horizontal line</div>
+                <div class="badge bg-success">Vertical line</div>
+                <div class="badge bg-success">Diagonal /</div>
+                <div class="badge bg-success">Diagonal \</div>
+                <div class="badge bg-success">4 corners</div>
+                <div class="badge bg-success">X</div>
+                <div class="badge bg-success">BINGO!</div>
             </div>
-        </div>
-    </div>    
+        </div>    
+        
+    </div>
 {% endblock %}

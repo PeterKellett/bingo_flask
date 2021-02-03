@@ -70,16 +70,14 @@
             $("#div1").html(txt);
 
             $('.badge').click(function(){
-                console.log("done" + $(this).attr('done'));
+                //console.log("done" + $(this).attr('done'));
                 var done = $(this).attr('done')
                 if (done == 'true') {
-                    console.log("if")
                     $(this).attr('done', 'false').addClass('bg-success');
                 }
                 else {
-                    console.log("else")
                     $(this).attr('done', 'true').removeClass('bg-success');
-                    $('.col').removeClass('yellow-background');
+                    $('.col-3').removeClass('yellow-background');
                 }            
             });
 
@@ -98,7 +96,7 @@
                 four_corners_done = $('.four_corners').attr('done');
                 cross_done = $('.cross').attr('done');
                 bingo_done = $('.bingo').attr('done');   
-                console.log("horizontal=" + horizontal_done)
+                //console.log("horizontal=" + horizontal_done)
                 row_0 = [];
                 row_1 = [];
                 row_2 = [];
@@ -114,7 +112,7 @@
                 var clicked = $(this).attr("clicked");
                 var image_clicked = $(this).attr("id");
                 id = image_clicked.split("_");
-                //console.log(id); 
+                console.log('id=' + id); 
                 x = parseInt(id[0]);
                 y = parseInt(id[1]);
                 id = [x, y];
@@ -357,14 +355,15 @@
                     if (bingo_done != 'true') {
                         console.log("numbers_clicked=" + numbers_clicked.length)
                         if (numbers_clicked.length == 16) {
-                            $('.col').addClass('yellow-background');
+                            $('.inner-col').addClass('yellow-background');
                             $('#bingo').show();
                             score += 6;
                             $('#score').html(score);
                             $('.bingo').attr('done', 'true').removeClass('bg-success');
+                            bingo_done = 'true';
                         }
                     }
-                                        
+                    console.log("score=" + score)                   
                     //console.log("row_0=" + row_0);
                     //console.log("row_1=" + row_1);
                     //console.log("row_2=" + row_2);
