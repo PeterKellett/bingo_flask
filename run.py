@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, flash, url_for, redirect
 from flask_pymongo import PyMongo
-
+import random
 if os.path.exists("env.py"):
     import env as config
 
@@ -19,18 +19,22 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     cards = list(mongo.db.ladies.find())
+    random.shuffle(cards)
+    sliced_cards = cards[0:16]
+
     x = 0
     y = 0
-    for card in cards:
+
+    for card in sliced_cards:
         card.update({'x': x, 'y': y})
-        print(card)
         x += 1
         if x == 4:
             x = 0
             y += 1
+
     return render_template('index.html',
                            page_title="Page 1",
-                           cards=cards)
+                           cards=sliced_cards)
 
 
 @app.route("/page_2")
