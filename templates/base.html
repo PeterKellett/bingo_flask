@@ -24,11 +24,11 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     {% if page_title == 'Page 1' %}
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Page 1</a>
-                        <a class="nav-link" href="{{ url_for('page_2') }}">Page 2</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Ladies</a>
+                        <a class="nav-link" href="{{ url_for('page_2') }}">Seas</a>
                     {% elif page_title == 'Page 2' %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Page 1</a>
-                        <a class="nav-link active" href="{{ url_for('page_2') }}">Page 2</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies</a>
+                        <a class="nav-link active" href="{{ url_for('page_2') }}">Seas</a>
                     {% endif %}
                 </div>
             </div>
@@ -45,13 +45,7 @@
             {% endif %}
         {% endwith %}
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div id="div1"></div>
-            </div>
-        </div>
-    </div>
+    
     {% block content %}
     {% endblock %}
 
@@ -131,7 +125,7 @@
                     }                   
                 }
                 else {
-                    $(this).attr('clicked', 'true').removeClass('red-border').fadeTo(1000, 0.4);
+                    $(this).attr('clicked', 'true').removeClass('red-border').fadeTo(500, 0.4);
                     numbers_clicked.push(id);
                     //console.log(numbers_clicked);
                 }
