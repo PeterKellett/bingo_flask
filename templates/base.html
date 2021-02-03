@@ -71,23 +71,24 @@
 
             $('.badge').click(function(){
                 //console.log("done" + $(this).attr('done'));
-                var done = $(this).attr('done')
+                var done = $(this).attr('done');
                 if (done == 'true') {
                     $(this).attr('done', 'false').addClass('bg-success');
                 }
                 else {
                     $(this).attr('done', 'true').removeClass('bg-success');
-                    $('.col-3').removeClass('yellow-background');
+                    $('.inner-col').removeClass('yellow-background');
                 }            
             });
+
+            $('.outer-score').click(function() {
+                $('.inner-col').removeClass('yellow-background');
+            })
 
 
             var numbers_clicked = []; 
             var score = 0;  
             $('#score').html(score); 
-            
-            
-
             $('img').click(function() {
                 horizontal_done = $('.horizontal').attr('done');
                 vertical_done = $('.vertical').attr('done');
@@ -363,7 +364,7 @@
                             bingo_done = 'true';
                         }
                     }
-                    console.log("score=" + score)                   
+                    //console.log("score=" + score)                   
                     //console.log("row_0=" + row_0);
                     //console.log("row_1=" + row_1);
                     //console.log("row_2=" + row_2);
