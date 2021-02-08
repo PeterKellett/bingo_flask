@@ -42,10 +42,12 @@ $(document).ready(function(){
         row_1 = [];
         row_2 = [];
         row_3 = [];
+        row_4 = [];
         col_0 = [];
         col_1 = [];
         col_2 = [];
         col_3 = [];
+        col_4 = [];
         right_diagonal = [];
         left_diagonal = [];
         four_corners = [];
@@ -87,7 +89,7 @@ $(document).ready(function(){
                     four_corners.push(1);
                     cross.push(1);
                 }
-                if (value[0] == 3) {
+                if (value[0] == 4) {
                     right_diagonal.push(1);
                     four_corners.push(1);
                     cross.push(1);
@@ -100,7 +102,7 @@ $(document).ready(function(){
                     left_diagonal.push(1);
                     cross.push(1);
                 }
-                if (value[0] == 2) {
+                if (value[0] == 3) {
                     right_diagonal.push(1);
                     cross.push(1);
                 }
@@ -110,9 +112,6 @@ $(document).ready(function(){
                 row_2.push(1);
                 if (value[0] == 2) {
                     left_diagonal.push(1);
-                    cross.push(1);
-                }
-                if (value[0] == 1) {
                     right_diagonal.push(1);
                     cross.push(1);
                 }
@@ -122,16 +121,27 @@ $(document).ready(function(){
                 row_3.push(1);
                 if (value[0] == 3) {
                     left_diagonal.push(1);
-                    four_corners.push(1);
                     cross.push(1);
                 }
-                if (value[0] == 0) {
+                if (value[0] == 1) {
                     right_diagonal.push(1);
-                    four_corners.push(1);
                     cross.push(1);
                 }
             }
-            
+            //row 4
+            if (value[1] == 4) {
+                row_4.push(1);
+                if (value[0] == 4) {
+                    left_diagonal.push(1);
+                    cross.push(1);
+                    four_corners.push(1);
+                }
+                if (value[0] == 0) {
+                    right_diagonal.push(1);
+                    cross.push(1);
+                    four_corners.push(1);
+                }
+            }
             //Column 0                   
             if (value[0] == 0) {
                 col_0.push(1);
@@ -148,44 +158,62 @@ $(document).ready(function(){
             if (value[0] == 3) {
                 col_3.push(1);
             } 
-            
+            //Column 4                  
+            if (value[0] == 4) {
+                col_4.push(1);
+            } 
             //Check for full sets
             if (horizontal_done != 'true') {
-                if (row_0.length == 4) {
+                if (row_0.length == 5) {
                     $('.row_0_col_0').addClass('yellow-background');
                     $('.row_0_col_1').addClass('yellow-background');
                     $('.row_0_col_2').addClass('yellow-background');
                     $('.row_0_col_3').addClass('yellow-background');
+                    $('.row_0_col_4').addClass('yellow-background');
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
                     $('.horizontal').attr('done', 'true').removeClass('bg-success');
                 }                        
-                if (row_1.length == 4) {
+                if (row_1.length == 5) {
                     $('.row_1_col_0').addClass('yellow-background');
                     $('.row_1_col_1').addClass('yellow-background');
                     $('.row_1_col_2').addClass('yellow-background');
                     $('.row_1_col_3').addClass('yellow-background');
+                    $('.row_1_col_4').addClass('yellow-background');
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
                     $('.horizontal').attr('done', 'true').removeClass('bg-success');
                 }                        
-                if (row_2.length == 4) {
+                if (row_2.length == 5) {
                     $('.row_2_col_0').addClass('yellow-background');
                     $('.row_2_col_1').addClass('yellow-background');
                     $('.row_2_col_2').addClass('yellow-background');
                     $('.row_2_col_3').addClass('yellow-background');
+                    $('.row_2_col_4').addClass('yellow-background');
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
                     $('.horizontal').attr('done', 'true').removeClass('bg-success');
                 }
-                if (row_3.length == 4) {
+                if (row_3.length == 5) {
                     $('.row_3_col_0').addClass('yellow-background');
                     $('.row_3_col_1').addClass('yellow-background');
                     $('.row_3_col_2').addClass('yellow-background');
                     $('.row_3_col_3').addClass('yellow-background');
+                    $('.row_3_col_4').addClass('yellow-background');
+                    $('#horizontal').show();
+                    score += 1;
+                    $('#score').html(score);
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                }
+                if (row_4.length == 5) {
+                    $('.row_4_col_0').addClass('yellow-background');
+                    $('.row_4_col_1').addClass('yellow-background');
+                    $('.row_4_col_2').addClass('yellow-background');
+                    $('.row_4_col_3').addClass('yellow-background');
+                    $('.row_4_col_4').addClass('yellow-background');
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
@@ -194,41 +222,56 @@ $(document).ready(function(){
             }
                 
             if (vertical_done != 'true') {
-                if (col_0.length == 4) {
+                if (col_0.length == 5) {
                     $('.row_0_col_0').addClass('yellow-background');
                     $('.row_1_col_0').addClass('yellow-background');
                     $('.row_2_col_0').addClass('yellow-background');
                     $('.row_3_col_0').addClass('yellow-background');
+                    $('.row_4_col_0').addClass('yellow-background');
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
                     $('.vertical').attr('done', 'true').removeClass('bg-success');
                 }                    
-                if (col_1.length == 4) {
+                if (col_1.length == 5) {
                     $('.row_0_col_1').addClass('yellow-background');
                     $('.row_1_col_1').addClass('yellow-background');
                     $('.row_2_col_1').addClass('yellow-background');
                     $('.row_3_col_1').addClass('yellow-background');
+                    $('.row_4_col_1').addClass('yellow-background');
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
                     $('.vertical').attr('done', 'true').removeClass('bg-success');
                 }
-                if (col_2.length == 4) {
+                if (col_2.length == 5) {
                     $('.row_0_col_2').addClass('yellow-background');
                     $('.row_1_col_2').addClass('yellow-background');
                     $('.row_2_col_2').addClass('yellow-background');
                     $('.row_3_col_2').addClass('yellow-background');
+                    $('.row_4_col_2').addClass('yellow-background');
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
                     $('.vertical').attr('done', 'true').removeClass('bg-success');
                 }
-                if (col_3.length == 4) {
+                if (col_3.length == 5) {
                     $('.row_0_col_3').addClass('yellow-background');
                     $('.row_1_col_3').addClass('yellow-background');
                     $('.row_2_col_3').addClass('yellow-background');
                     $('.row_3_col_3').addClass('yellow-background');
+                    $('.row_4_col_3').addClass('yellow-background');
+                    $('#vertical').show();
+                    score += 1;
+                    $('#score').html(score);
+                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                }
+                if (col_4.length == 5) {
+                    $('.row_0_col_4').addClass('yellow-background');
+                    $('.row_1_col_4').addClass('yellow-background');
+                    $('.row_2_col_4').addClass('yellow-background');
+                    $('.row_3_col_4').addClass('yellow-background');
+                    $('.row_4_col_4').addClass('yellow-background');
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
@@ -237,11 +280,12 @@ $(document).ready(function(){
             }
                                 
             if (left_diagonal_done != 'true') {
-                if (left_diagonal.length == 4) {
+                if (left_diagonal.length == 5) {
                     $('.row_0_col_0').addClass('yellow-background');
                     $('.row_1_col_1').addClass('yellow-background');
                     $('.row_2_col_2').addClass('yellow-background');
                     $('.row_3_col_3').addClass('yellow-background');
+                    $('.row_4_col_4').addClass('yellow-background');
                     $('#left_diagonal').show();
                     score += 3;
                     $('#score').html(score);
@@ -250,11 +294,12 @@ $(document).ready(function(){
             }
             
             if (right_diagonal_done != 'true') {
-                if (right_diagonal.length == 4) {
-                    $('.row_0_col_3').addClass('yellow-background');
-                    $('.row_1_col_2').addClass('yellow-background');
-                    $('.row_2_col_1').addClass('yellow-background');
-                    $('.row_3_col_0').addClass('yellow-background');
+                if (right_diagonal.length == 5) {
+                    $('.row_0_col_4').addClass('yellow-background');
+                    $('.row_1_col_3').addClass('yellow-background');
+                    $('.row_2_col_2').addClass('yellow-background');
+                    $('.row_3_col_1').addClass('yellow-background');
+                    $('.row_4_col_0').addClass('yellow-background');
                     $('#right_diagonal').show();
                     score += 3;
                     $('#score').html(score);
@@ -265,9 +310,9 @@ $(document).ready(function(){
             if (four_corners_done != 'true') {
                 if (four_corners.length == 4) {
                     $('.row_0_col_0').addClass('yellow-background');
-                    $('.row_0_col_3').addClass('yellow-background');
-                    $('.row_3_col_0').addClass('yellow-background');
-                    $('.row_3_col_3').addClass('yellow-background');
+                    $('.row_0_col_4').addClass('yellow-background');
+                    $('.row_4_col_0').addClass('yellow-background');
+                    $('.row_4_col_4').addClass('yellow-background');
                     $('#four_corners').show();
                     score += 3;
                     $('#score').html(score);
@@ -277,15 +322,16 @@ $(document).ready(function(){
             }
 
             if (cross_done != 'true') {
-                if (cross.length == 8) {
+                if (cross.length == 9) {
                     $('.row_0_col_0').addClass('yellow-background');
                     $('.row_1_col_1').addClass('yellow-background');
                     $('.row_2_col_2').addClass('yellow-background');
                     $('.row_3_col_3').addClass('yellow-background');
-                    $('.row_0_col_3').addClass('yellow-background');
-                    $('.row_1_col_2').addClass('yellow-background');
-                    $('.row_2_col_1').addClass('yellow-background');
-                    $('.row_3_col_0').addClass('yellow-background');
+                    $('.row_4_col_4').addClass('yellow-background');
+                    $('.row_0_col_4').addClass('yellow-background');
+                    $('.row_1_col_3').addClass('yellow-background');
+                    $('.row_3_col_1').addClass('yellow-background');
+                    $('.row_4_col_0').addClass('yellow-background');
                     $('#cross').show();
                     score += 5;
                     $('#score').html(score);
@@ -295,7 +341,7 @@ $(document).ready(function(){
 
             if (bingo_done != 'true') {
                 console.log("numbers_clicked=" + numbers_clicked.length)
-                if (numbers_clicked.length == 16) {
+                if (numbers_clicked.length == 25) {
                     $('.inner-col').addClass('yellow-background');
                     $('#bingo').show();
                     score += 6;
