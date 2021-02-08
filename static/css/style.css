@@ -2,9 +2,14 @@ body {
     max-height: 100vH;
 }
 
-img {
-    
+img {   
     margin: 5px;   
+}
+
+.small-image {
+    margin: 5px;
+    height: 110px;
+    width: 110px;
 }
 
 .red-border {
