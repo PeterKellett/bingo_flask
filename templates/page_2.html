@@ -5,10 +5,12 @@
             <div class="col-8">
                 {% for y in range(5) %}
                     <div class="row justify-content-center">            
-                        {% for x in range(5) %}                                        
-                            <div class="col row_{{ y }}_col_{{ x }} inner-col">
-                                <img class="d-block red-border small-image" id="{{ x }}_{{ y }}" src="https://res.cloudinary.com/dfboxofas/image/upload/v1612351323/bingo/ladies/jk_rowling_ubdszf.jpg" alt="">
-                            </div>                                                 
+                        {% for x in range(5) %} 
+                        <div class="col">                                       
+                            <div class="row_{{ y }}_col_{{ x }} inner-col">
+                                <img class="d-block red-border small-image mx-auto" id="{{ x }}_{{ y }}" src="https://res.cloudinary.com/dfboxofas/image/upload/v1612351323/bingo/ladies/jk_rowling_ubdszf.jpg" alt="JK">
+                            </div>   
+                        </div>                                              
                         {% endfor %}                      
                     </div>    
                 {% endfor %}    

@@ -5,12 +5,9 @@
             <div class="col-10">
                 <div class="row">
                     {% for card in cards %}
-                        <div class="col-3 mb-1">
-                            <div class="row_{{ card.y }}_col_{{ card.x }} inner-col">
-                                <img class="d-block mx-auto img-fluid red-border" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="">
-                            </div>
-                        </div>                     
-                    
+                        <div class="col-3 mb-1">                                                      
+                            <img class="d-block mx-auto img-fluid red-border" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="{{ card.name }}">                   
+                        </div>                                         
                     {% endfor %}
                 </div>
             </div>
@@ -19,7 +16,7 @@
                 <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>
                 <div class="badge bg-success right_diagonal">Diagonal right  /<span id="right_diagonal">(3)</span></div>
                 <div class="badge bg-success left_diagonal">Diagonal left  \<span id="left_diagonal">(3)</span></div>
-                <div class="badge bg-success four_corners">4 corners  ::<span id="four_corners">(3)</span></div>
+                <div class="badge bg-success four_corners">4 corners  : :<span id="four_corners">(3)</span></div>
                 <div class="badge bg-success cross">X<span id="cross">(5)</span></div>
                 <div class="badge bg-success bingo">BINGO!<span id="bingo">(6)</span></div>
                 <div class="outer-score"><p id="score"></p></div>

@@ -44,6 +44,13 @@ def page_2():
                            page_title="Page 2")
 
 
+@app.route("/page_3")
+def page_3():
+    # flash("Button clicked")
+    return render_template("page_3.html",
+                           page_title="Page 3")
+
+
 if __name__ == "__main__":
     debug = os.environ.get("DEVELOPMENT", False)
     app.run(host=os.environ.get("IP"),

@@ -6,17 +6,19 @@ img {
     margin: 5px;   
 }
 
+
+
 .small-image {
     margin: 5px;
-    height: 110px;
-    width: 110px;
+    height: 125px;
+    width: 125px;
 }
 
 .red-border {
     border: 2px solid red; 
 }
 
-.yellow-background {
+.green-border {
     border: 2px solid green;
 }
 
