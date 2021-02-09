@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %} 
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-8">
+                {% for y in range(5) %}
+                    <div class="row justify-content-center">            
+                        {% for x in range(5) %} 
+                        <div class="col">                                       
+                            <div class="row_{{ y }}_col_{{ x }} inner-col text-center">
+                                <img class="red-border small-image" id="{{ x }}_{{ y }}" src="https://res.cloudinary.com/dfboxofas/image/upload/v1612351323/bingo/ladies/jk_rowling_ubdszf.jpg" alt="JK">
+                                <img class="small-image d-none" clicked_before="true" id="{{ x }}_{{ y }}" src="static/images/cats_0_0.png" alt="AE">
+                            </div>   
+                        </div>                                              
+                        {% endfor %}                      
+                    </div>    
+                {% endfor %}    
+            </div>
+            <div class="col-2">
+                <div class="badge bg-success horizontal mt-1">Horizontal line  --<span id="horizontal">(1)</span></div>
+                <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>
+                <div class="badge bg-success right_diagonal">Diagonal right  /<span id="right_diagonal">(3)</span></div>
+                <div class="badge bg-success left_diagonal">Diagonal left  \<span id="left_diagonal">(3)</span></div>
+                <div class="badge bg-success four_corners">4 corners  ::<span id="four_corners">(3)</span></div>
+                <div class="badge bg-success cross">X<span id="cross">(5)</span></div>
+                <div class="badge bg-success bingo">BINGO!<span id="bingo">(6)</span></div>
+                <div class="outer-score"><p id="score"></p></div>
+                <a href="{{ url_for('page_3') }}"><button type="button" class="btn btn-danger my-1 w-100">New board</button></a>
+            </div>
+        </div>            
+    </div>
+
+<script src="{{ url_for('static', filename='js/page_3.js') }}"></script>
+{% endblock %}
