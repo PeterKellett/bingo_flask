@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/page_3.css') }}">
+{% endblock %}
 {% block content %} 
-    <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-8">
-                {% for y in range(5) %}
-                    <div class="row justify-content-center">            
-                        {% for x in range(5) %} 
-                        <div class="col">                                       
-                            <div class="row_{{ y }}_col_{{ x }} inner-col text-center">
-                                <img class="red-border small-image" id="{{ x }}_{{ y }}" src="https://res.cloudinary.com/dfboxofas/image/upload/v1612351323/bingo/ladies/jk_rowling_ubdszf.jpg" alt="JK">
-                                <img class="small-image d-none" clicked_before="true" id="{{ x }}_{{ y }}" src="static/images/cats_0_0.png" alt="AE">
-                            </div>   
-                        </div>                                              
-                        {% endfor %}                      
-                    </div>    
-                {% endfor %}    
+    <div class="container mt-1">
+        <div class="row">
+            <div class="col-7">               
+                <div class="outer-div text-center">
+                    {% for card in cards %}    
+                        <div class=" inner-div">    
+                            <div id="gd_{{ card.x }}_{{ card.y }}" class="green-dot"></div>  
+                            <img class="w-100 h-100 m-0" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="{{ card.name }}">                               
+                        </div>                  
+                    {% endfor %}                
+                </div>
             </div>
+
             <div class="col-2">
                 <div class="badge bg-success horizontal mt-1">Horizontal line  --<span id="horizontal">(1)</span></div>
                 <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>

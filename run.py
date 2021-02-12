@@ -40,15 +40,42 @@ def index():
 @app.route("/page_2")
 def page_2():
     # flash("Button clicked")
+    cards = list(mongo.db.ladies.find())
+    random.shuffle(cards)
+    sliced_cards = cards[0:25]
+    # Index the cards for x and y configuration
+    x = 0
+    y = 0
+    for card in sliced_cards:
+        card.update({'x': x, 'y': y})
+        x += 1
+        if x == 5:
+            x = 0
+            y += 1
     return render_template("page_2.html",
-                           page_title="Page 2")
+                           page_title="Page 2",
+                           cards=sliced_cards)
 
 
 @app.route("/page_3")
 def page_3():
     # flash("Button clicked")
-    return render_template("page_3.html",
-                           page_title="Page 3")
+    cards = list(mongo.db.ladies.find())
+    random.shuffle(cards)
+    sliced_cards = cards[0:25]
+    # Index the cards for x and y configuration
+    x = 0
+    y = 0
+    for card in sliced_cards:
+        card.update({'x': x, 'y': y})
+        x += 1
+        if x == 5:
+            x = 0
+            y += 1
+    # Serve the cards
+    return render_template('page_3.html',
+                           page_title="Page 3",
+                           cards=sliced_cards)
 
 
 if __name__ == "__main__":
