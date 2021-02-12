@@ -1,19 +1,29 @@
 {% extends 'base.html' %}
 {% block content %} 
     <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-8">
-                {% for y in range(5) %}
-                    <div class="row justify-content-center">            
-                        {% for x in range(5) %} 
-                        <div class="col">                                       
-                            <div class="row_{{ y }}_col_{{ x }} inner-col">
-                                <img class="d-block red-border small-image mx-auto" id="{{ x }}_{{ y }}" src="https://res.cloudinary.com/dfboxofas/image/upload/v1612351323/bingo/ladies/jk_rowling_ubdszf.jpg" alt="JK">
-                            </div>   
-                        </div>                                              
-                        {% endfor %}                      
-                    </div>    
-                {% endfor %}    
+        <div class="row">
+            <div class="col-10 col-xl-8">
+                <div class="row">
+                {% for card in cards %}
+                {% if (loop.index -1 ) %5 != 0 %}
+                    <div class="col p-0">
+                        <div class="row_{{ card.y }}_col_{{ card.x }} inner-col text-center">
+                            <img class="red-border small-image" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="{{ card.name }}"> 
+                            <img class="small-image d-none" clicked_before="true" id="{{ card.x }}_{{ card.y }}" src="static/images/cats_0_0.png" alt="AE">
+                        </div>
+                    </div>                                            
+                {% else %}
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row_{{ card.y }}_col_{{ card.x }} inner-col text-center">
+                            <img class="red-border small-image" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="{{ card.name }}"> 
+                            <img class="small-image d-none" clicked_before="true" id="{{ card.x }}_{{ card.y }}" src="static/images/cats_0_0.png" alt="AE">
+                        </div>
+                    </div>                        
+                {% endif %}
+                {% endfor %}
+                </div>
             </div>
             <div class="col-2">
                 <div class="badge bg-success horizontal mt-1">Horizontal line  --<span id="horizontal">(1)</span></div>
