@@ -12,10 +12,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Bingo</title>
+    {% block extra_css %}
+    {% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,14 +26,17 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     {% if page_title == 'Page 1' %}
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Ladies</a>
-                        <a class="nav-link" href="{{ url_for('page_2') }}">Seas</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}"><strong>Ladies (4x4)</strong></a>
+                        <a class="nav-link" href="{{ url_for('page_2') }}">Ladies (5x5)</a>
+                        <a class="nav-link" href="{{ url_for('page_3') }}">Extra (5x5)</a>
                     {% elif page_title == 'Page 2' %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies</a>
-                        <a class="nav-link active" href="{{ url_for('page_2') }}">Seas</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies (4x4)</a>
+                        <a class="nav-link active" href="{{ url_for('page_2') }}"><strong>Ladies (5x5)</strong></a>
+                        <a class="nav-link" href="{{ url_for('page_3') }}">Extra (5x5)</a>
                     {% else %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies</a>
-                        <a class="nav-link active" href="{{ url_for('page_2') }}">Seas</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies (4x4)</a>
+                        <a class="nav-link" href="{{ url_for('page_2') }}">Ladies (5x5)</a>
+                        <a class="nav-link active" href="{{ url_for('page_3') }}"><strong>Extra (5x5)</strong></a>
                     {% endif %}
                 </div>
             </div>
