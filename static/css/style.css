@@ -6,7 +6,12 @@ img {
     margin: 5px;   
 }
 
-
+.background {
+    background-image: url('https://res.cloudinary.com/dfboxofas/image/upload/v1612954661/bingo/IMG_20200817_201743_yfl4xy.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
 
 .small-image {
     margin: 5px;
