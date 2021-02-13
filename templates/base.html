@@ -16,7 +16,7 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -25,18 +25,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    {% if page_title == 'Page 1' %}
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}"><strong>Ladies (4x4)</strong></a>
+                    {% if page_title == 'Marine' %}
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}"><strong>Marine</strong></a>
                         <a class="nav-link" href="{{ url_for('page_2') }}">Ladies (5x5)</a>
-                        <a class="nav-link" href="{{ url_for('page_3') }}">Extra (5x5)</a>
+                        <a class="nav-link" href="{{ url_for('page_3') }}">Ladies (4x4)</a>
                     {% elif page_title == 'Page 2' %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies (4x4)</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine</a>
                         <a class="nav-link active" href="{{ url_for('page_2') }}"><strong>Ladies (5x5)</strong></a>
-                        <a class="nav-link" href="{{ url_for('page_3') }}">Extra (5x5)</a>
+                        <a class="nav-link" href="{{ url_for('page_3') }}">Ladies (4x4)</a>
                     {% else %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Ladies (4x4)</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine</a>
                         <a class="nav-link" href="{{ url_for('page_2') }}">Ladies (5x5)</a>
-                        <a class="nav-link active" href="{{ url_for('page_3') }}"><strong>Extra (5x5)</strong></a>
+                        <a class="nav-link active" href="{{ url_for('page_3') }}"><strong>Ladies (4x4)</strong></a>
                     {% endif %}
                 </div>
             </div>

@@ -18,22 +18,22 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    # Get/shuffle and cut the cards
-    cards = list(mongo.db.ladies.find())
+    # flash("Button clicked")
+    cards = list(mongo.db.marine.find())
     random.shuffle(cards)
-    sliced_cards = cards[0:16]
+    sliced_cards = cards[0:25]
     # Index the cards for x and y configuration
     x = 0
     y = 0
     for card in sliced_cards:
         card.update({'x': x, 'y': y})
         x += 1
-        if x == 4:
+        if x == 5:
             x = 0
             y += 1
     # Serve the cards
-    return render_template('index.html',
-                           page_title="Page 1",
+    return render_template('marine.html',
+                           page_title="Marine",
                            cards=sliced_cards)
 
 
@@ -59,23 +59,24 @@ def page_2():
 
 @app.route("/page_3")
 def page_3():
-    # flash("Button clicked")
+    # Get/shuffle and cut the cards
     cards = list(mongo.db.ladies.find())
     random.shuffle(cards)
-    sliced_cards = cards[0:25]
+    sliced_cards = cards[0:16]
     # Index the cards for x and y configuration
     x = 0
     y = 0
     for card in sliced_cards:
         card.update({'x': x, 'y': y})
         x += 1
-        if x == 5:
+        if x == 4:
             x = 0
             y += 1
     # Serve the cards
-    return render_template('page_3.html',
-                           page_title="Page 3",
+    return render_template('index.html',
+                           page_title="Page 1",
                            cards=sliced_cards)
+
 
 
 if __name__ == "__main__":
