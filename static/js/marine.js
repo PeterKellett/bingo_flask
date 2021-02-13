@@ -1,8 +1,8 @@
 $(document).ready(function(){
     console.log("Document ready");
+    $('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1612954661/bingo/IMG_20200817_201743_yfl4xy.jpg')");
     // $(".flashes").fadeOut("slow");
-    // screen size script
-    
+    // screen size script    
     var width = $("body").innerWidth();
     var height = $(window).innerHeight();
     console.log(height);
@@ -21,16 +21,17 @@ $(document).ready(function(){
         //console.log("done" + $(this).attr('done'));
         var done = $(this).attr('done');
         if (done == 'true') {
-            $(this).attr('done', 'false').addClass('bg-success');
+            $(this).attr('done', 'false').addClass('bg-success').removeClass('text-dark');
         }
         else {
-            $(this).attr('done', 'true').removeClass('bg-success');
+            $(this).attr('done', 'true').removeClass('bg-success').addClass('text-dark');
             $('.inner-col').removeClass('green-border');
         }            
     });
 
     $('.outer-score').click(function() {
         $('.green-dot').hide();
+        $('.badge').removeClass('badge-border');
     })
 
 
@@ -38,6 +39,8 @@ $(document).ready(function(){
     var score = 0;  
     $('#score').html(score); 
     $('img').click(function() {
+        $('.badge').removeClass('badge-border');
+        $('.green-dot').hide();
         horizontal_done = $('.horizontal').attr('done');
         vertical_done = $('.vertical').attr('done');
         right_diagonal_done = $('.right_diagonal').attr('done');
@@ -182,7 +185,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                     //window.alert("sometext");
                 }                        
                 if (row_1.length == 5) {
@@ -194,7 +197,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }                        
                 if (row_2.length == 5) {
                     $('#gd_0_2').show();
@@ -205,7 +208,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (row_3.length == 5) {
                     $('#gd_0_3').show();
@@ -216,7 +219,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (row_4.length == 5) {
                     $('#gd_0_4').show();
@@ -227,7 +230,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
                 
@@ -241,7 +244,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }                    
                 if (col_1.length == 5) {
                     $('#gd_1_0').show();
@@ -252,7 +255,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (col_2.length == 5) {
                     $('#gd_2_0').show();
@@ -263,7 +266,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (col_3.length == 5) {
                     $('#gd_3_0').show();
@@ -274,7 +277,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (col_4.length == 5) {
                     $('#gd_4_0').show();
@@ -285,7 +288,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
                                 
@@ -299,7 +302,7 @@ $(document).ready(function(){
                     $('#left_diagonal').show();
                     score += 3;
                     $('#score').html(score);
-                    $('.left_diagonal').attr('done', 'true').removeClass('bg-success');
+                    $('.left_diagonal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }   
             }
             
@@ -313,7 +316,7 @@ $(document).ready(function(){
                     $('#right_diagonal').show();
                     score += 3;
                     $('#score').html(score);
-                    $('.right_diagonal').attr('done', 'true').removeClass('bg-success');
+                    $('.right_diagonal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
             
@@ -326,7 +329,7 @@ $(document).ready(function(){
                     $('#four_corners').show();
                     score += 3;
                     $('#score').html(score);
-                    $('.four_corners').attr('done', 'true').removeClass('bg-success');
+                    $('.four_corners').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
 
                 }
             }
@@ -345,7 +348,7 @@ $(document).ready(function(){
                     $('#cross').show();
                     score += 5;
                     $('#score').html(score);
-                    $('.cross').attr('done', 'true').removeClass('bg-success');
+                    $('.cross').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
 
@@ -356,7 +359,7 @@ $(document).ready(function(){
                     $('#bingo').show();
                     score += 6;
                     $('#score').html(score);
-                    $('.bingo').attr('done', 'true').removeClass('bg-success');
+                    $('.bingo').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                     bingo_done = 'true';
                 }
             }
