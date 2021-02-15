@@ -8,21 +8,22 @@ $(document).ready(function(){
     txt += "Height: " + $("body").outerHeight();
     $("#div1").html(txt);
     
-   
+    
     $('.badge').click(function(){
         //console.log("done" + $(this).attr('done'));
         var done = $(this).attr('done');
         if (done == 'true') {
-            $(this).attr('done', 'false').addClass('bg-success');
+            $(this).attr('done', 'false').addClass('bg-success').removeClass('text-dark');
         }
         else {
-            $(this).attr('done', 'true').removeClass('bg-success');
+            $(this).attr('done', 'true').removeClass('bg-success').addClass('text-dark');
             $('img').removeClass('green-border');
         }            
     });
 
     $('.outer-score').click(function() {
         $('img').removeClass('green-border');
+        $('.badge').removeClass('badge-border');
     })
 
 
@@ -30,6 +31,8 @@ $(document).ready(function(){
     var score = 0;  
     $('#score').html(score); 
     $('img').click(function() {
+        $('.badge').removeClass('badge-border');
+        $('img').removeClass('green-border');
         horizontal_done = $('.horizontal').attr('done');
         vertical_done = $('.vertical').attr('done');
         right_diagonal_done = $('.right_diagonal').attr('done');
@@ -159,7 +162,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }                        
                 if (row_1.length == 4) {
                     $('#0_1').addClass('green-border');
@@ -169,7 +172,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }                        
                 if (row_2.length == 4) {
                     $('#0_2').addClass('green-border');
@@ -179,7 +182,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (row_3.length == 4) {
                     $('#0_3').addClass('green-border');
@@ -189,7 +192,7 @@ $(document).ready(function(){
                     $('#horizontal').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.horizontal').attr('done', 'true').removeClass('bg-success');
+                    $('.horizontal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
                 
@@ -202,7 +205,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }                    
                 if (col_1.length == 4) {
                     $('#1_0').addClass('green-border');
@@ -212,7 +215,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (col_2.length == 4) {
                     $('#2_0').addClass('green-border');
@@ -222,7 +225,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
                 if (col_3.length == 4) {
                     $('#3_0').addClass('green-border');
@@ -232,7 +235,7 @@ $(document).ready(function(){
                     $('#vertical').show();
                     score += 1;
                     $('#score').html(score);
-                    $('.vertical').attr('done', 'true').removeClass('bg-success');
+                    $('.vertical').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
                                 
@@ -245,7 +248,7 @@ $(document).ready(function(){
                     $('#left_diagonal').show();
                     score += 3;
                     $('#score').html(score);
-                    $('.left_diagonal').attr('done', 'true').removeClass('bg-success');
+                    $('.left_diagonal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }   
             }
             
@@ -258,7 +261,7 @@ $(document).ready(function(){
                     $('#right_diagonal').show();
                     score += 3;
                     $('#score').html(score);
-                    $('.right_diagonal').attr('done', 'true').removeClass('bg-success');
+                    $('.right_diagonal').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
             
@@ -271,7 +274,7 @@ $(document).ready(function(){
                     $('#four_corners').show();
                     score += 3;
                     $('#score').html(score);
-                    $('.four_corners').attr('done', 'true').removeClass('bg-success');
+                    $('.four_corners').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
 
                 }
             }
@@ -289,7 +292,7 @@ $(document).ready(function(){
                     $('#cross').show();
                     score += 5;
                     $('#score').html(score);
-                    $('.cross').attr('done', 'true').removeClass('bg-success');
+                    $('.cross').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
 
@@ -300,7 +303,7 @@ $(document).ready(function(){
                     $('#bingo').show();
                     score += 6;
                     $('#score').html(score);
-                    $('.bingo').attr('done', 'true').removeClass('bg-success');
+                    $('.bingo').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                     bingo_done = 'true';
                 }
             }

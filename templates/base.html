@@ -26,16 +26,16 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     {% if page_title == 'Marine' %}
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}"><strong>Marine</strong></a>
-                        <a class="nav-link" href="{{ url_for('page_2') }}">Ladies (5x5)</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}"><strong>Marine (1)</strong></a>
+                        <a class="nav-link" href="{{ url_for('page_2') }}">Marine (2)</a>
                         <a class="nav-link" href="{{ url_for('page_3') }}">Ladies (4x4)</a>
                     {% elif page_title == 'Page 2' %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine</a>
-                        <a class="nav-link active" href="{{ url_for('page_2') }}"><strong>Ladies (5x5)</strong></a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine (1)</a>
+                        <a class="nav-link active" href="{{ url_for('page_2') }}"><strong>Marine (2)</strong></a>
                         <a class="nav-link" href="{{ url_for('page_3') }}">Ladies (4x4)</a>
                     {% else %}
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine</a>
-                        <a class="nav-link" href="{{ url_for('page_2') }}">Ladies (5x5)</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine (1)</a>
+                        <a class="nav-link" href="{{ url_for('page_2') }}">Marine (2)</a>
                         <a class="nav-link active" href="{{ url_for('page_3') }}"><strong>Ladies (4x4)</strong></a>
                     {% endif %}
                 </div>

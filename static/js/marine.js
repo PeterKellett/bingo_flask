@@ -1,6 +1,6 @@
 $(document).ready(function(){
     console.log("Document ready");
-    $('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1612954661/bingo/IMG_20200817_201743_yfl4xy.jpg')");
+    
     // $(".flashes").fadeOut("slow");
     // screen size script    
     var width = $("body").innerWidth();
@@ -25,7 +25,6 @@ $(document).ready(function(){
         }
         else {
             $(this).attr('done', 'true').removeClass('bg-success').addClass('text-dark');
-            $('.inner-col').removeClass('green-border');
         }            
     });
 

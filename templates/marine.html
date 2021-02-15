@@ -31,4 +31,9 @@
     </div>
 
 <script src="{{ url_for('static', filename='js/marine.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){$('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1612954661/bingo/IMG_20200817_201743_yfl4xy.jpg')"); }, 3000);
+    })
+</script>
 {% endblock %}

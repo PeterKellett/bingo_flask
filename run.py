@@ -40,7 +40,7 @@ def index():
 @app.route("/page_2")
 def page_2():
     # flash("Button clicked")
-    cards = list(mongo.db.ladies.find())
+    cards = list(mongo.db.marine.find())
     random.shuffle(cards)
     sliced_cards = cards[0:25]
     # Index the cards for x and y configuration
