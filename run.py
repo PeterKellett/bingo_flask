@@ -78,7 +78,6 @@ def page_3():
                            cards=sliced_cards)
 
 
-
 if __name__ == "__main__":
     debug = os.environ.get("DEVELOPMENT", False)
     app.run(host=os.environ.get("IP"),
