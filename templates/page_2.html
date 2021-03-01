@@ -5,18 +5,13 @@
 {% block content %} 
     <div class="container mt-1">
         <div class="row">
-            <div class="col-7">               
+            <div class="col-8 col-lg-7">               
                 <div class="outer-div text-center">
-                    {% for card in cards %}    
-                        <div class=" inner-div">    
-                            <div id="gd_{{ card.x }}_{{ card.y }}" class="green-dot"></div>  
-                            <img class="w-100 h-100 m-0" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="{{ card.name }}">                               
-                        </div>                  
-                    {% endfor %}                
+                          
                 </div>
             </div>
 
-            <div class="col-2">
+            <div class="col-4 col-lg-2">
                 <div class="badge bg-success horizontal mt-1">Horizontal line  --<span id="horizontal">(1)</span></div>
                 <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>
                 <div class="badge bg-success right_diagonal">Diagonal right  /<span id="right_diagonal">(3)</span></div>
@@ -25,15 +20,15 @@
                 <div class="badge bg-success cross">X<span id="cross">(5)</span></div>
                 <div class="badge bg-success bingo">BINGO!<span id="bingo">(6)</span></div>
                 <div class="outer-score"><p id="score"></p></div>
-                <a href="{{ url_for('page_2') }}"><button type="button" class="btn btn-danger my-1 w-100">New board</button></a>
+                <button id="shuffle" type="button" class="btn btn-danger my-1 w-100">New board</button>
             </div>
         </div>            
     </div>
-
-<script src="{{ url_for('static', filename='js/marine.js') }}"></script>
+<script type="text/javascript" src="static/data/marine.json"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <script>
     $(document).ready(function(){
-        setTimeout(function(){$('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1613143967/bingo/bad_hair_day_ajv96a.gif')"); }, 3000);
+        setTimeout(function(){$('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1614611001/bingo/keep_it_under_your_hat_catchphrase_so0wdc.jpg')"); }, 3000);
     })
 </script>
 {% endblock %}

@@ -1,28 +1,34 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="container">
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/marine.css') }}">
+{% endblock %}
+{% block content %} 
+    <div class="container mt-1">
         <div class="row">
-            <div class="col-10">
-                <div class="row">
-                    {% for card in cards %}
-                        <div class="col-3 mb-1">                                                       
-                            <img class="d-block mx-auto img-fluid red-border" id="{{ card.x }}_{{ card.y }}" src="{{ card.image }}" alt="{{ card.name }}">                   
-                        </div>                                         
-                    {% endfor %}
+            <div class="col-8 col-lg-7">               
+                <div class="outer-div text-center">
+                          
                 </div>
             </div>
-            <div class="col-2">
+
+            <div class="col-4 col-lg-2">
                 <div class="badge bg-success horizontal mt-1">Horizontal line  --<span id="horizontal">(1)</span></div>
                 <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>
                 <div class="badge bg-success right_diagonal">Diagonal right  /<span id="right_diagonal">(3)</span></div>
                 <div class="badge bg-success left_diagonal">Diagonal left  \<span id="left_diagonal">(3)</span></div>
-                <div class="badge bg-success four_corners">4 corners  : :<span id="four_corners">(3)</span></div>
+                <div class="badge bg-success four_corners">4 corners  ::<span id="four_corners">(3)</span></div>
                 <div class="badge bg-success cross">X<span id="cross">(5)</span></div>
                 <div class="badge bg-success bingo">BINGO!<span id="bingo">(6)</span></div>
                 <div class="outer-score"><p id="score"></p></div>
-                <a href="{{ url_for('page_3') }}"><button type="button" class="btn btn-danger my-1 w-100">New board</button></a>
-            </div>
-        </div>
-    </div>    
+                <button id="shuffle" type="button" class="btn btn-danger my-1 w-100">New board</button>
+            </div>           
+        </div>            
+    </div>
+<script type="text/javascript" src="static/data/cards.json"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){$('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1614610855/bingo/keep_an_eye_on_things_catchphrase_nyjxdj.jpg')"); }, 3000);
+    })
+</script>
 {% endblock %}
