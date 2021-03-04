@@ -1,6 +1,69 @@
 $(document).ready(function(){
     console.log("Document ready");
     var outerDiv = document.querySelector('.outer-div');
+    var gridSize;
+    var innerDivSize;
+    var cards = getCards();
+    
+
+    async function getCards() {
+        console.log("getCards");
+        const response = await fetch("./static/data/marine.json");
+        cards = await response.json();
+        mixCards(cards);
+    }
+    
+    function setGridSize() {
+        var width = $(".grid").width(); 
+        var height = $(window).outerHeight() - 50;
+        if (width < height) {
+            gridSize = width;
+        } else {
+            gridSize = height;
+        }
+        $('.outer-div').height(gridSize).width(gridSize);
+        innerDivSize = ((gridSize) / 5)
+        $('.inner-div').height(innerDivSize).width(innerDivSize); 
+        var txt = "";
+        txt += "Width: " + $("body").outerWidth() + "</br>";
+        txt += "Height: " + $("body").outerHeight() + "</br>";
+        txt += "grid: " + width;
+        $("#div1").html(txt);
+    }
+
+    $("#mix-cards").click(mixCards);
+
+    async function mixCards() {
+        $(".outer-div").empty();
+        console.log('mix cards');  
+        cards.sort(() => 0.5 - Math.random()); 
+        console.log(cards);  
+        i = 0; 
+        for (y = 0; y < 5; y++) {
+            for (x = 0; x < 5; x++) {
+                var innerDiv = document.createElement('div');
+                var greenDot = document.createElement('div');
+                var card = document.createElement('img');
+                innerDiv.setAttribute('class', 'inner-div');
+                greenDot.setAttribute('id', "gd_" + x + "_" + y);
+                greenDot.setAttribute('class', 'green-dot');
+                card.setAttribute('id', x + "_" + y);
+                card.setAttribute('src', cards[i].url);
+                card.addEventListener('click', click_image);
+                innerDiv.appendChild(greenDot);
+                innerDiv.appendChild(card);
+                outerDiv.appendChild(innerDiv);
+                i++
+                setGridSize();
+            }                
+        } 
+         
+        $('.badge').attr('done', 'false').addClass('bg-success').removeClass('text-dark badge-border');
+        setTimeout(function(){
+            $('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1613994754/bingo/falling_on_deaf_ears_ft8c3n.jpg')");
+        }, 1000);
+    }
+
     var row_0 = [];
     var row_1 = [];
     var row_2 = [];
@@ -18,78 +81,8 @@ $(document).ready(function(){
     var numbers_clicked = []; 
     var score = 0;   
     $('#score').html(score);
-    var height;
-    var innerDivWidth
-    set_grid_size();
-    shuffle_cards ();
-    //const zoomMeeting = document.getElementById("zmmtg-root")
-    //console.log("const zoom")
-    //document.getElementById("zoom-col").appendChild(zoomMeeting);
-    function set_grid_size() {
-        console.log("set grid function")
-        height = $(".outer-div").outerWidth();
-        $('.outer-div').height(height);
-        innerDivWidth = ((height) / 5)
-        $('.inner-div').width(innerDivWidth).height(innerDivWidth);
-        var txt = "";
-        txt += "Width: " + $(window).outerWidth() + "</br>";
-        txt += "Height: " + $(window).outerHeight();
-        $("#div1").html(txt);
-    }
 
-    function shuffle_cards() {
-        fetch("./static/data/marine.json")
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            row_0 = [];
-            row_1 = [];
-            row_2 = [];
-            row_3 = [];
-            row_4 = [];
-            col_0 = [];
-            col_1 = [];
-            col_2 = [];
-            col_3 = [];
-            col_4 = [];
-            right_diagonal = [];
-            left_diagonal = [];
-            four_corners = [];
-            cross = [];
-            numbers_clicked = [];
-            score = 0;
-            $('#score').html(score);
-            $('span').hide();
-            $( ".outer-div" ).empty();
-            data.sort(() => 0.5 - Math.random());
-            var i = 0;
-            for (y = 0; y < 5; y++) {
-                for (x = 0; x < 5; x++) {
-                    var innerDiv = document.createElement('div');
-                    var greenDot = document.createElement('div');
-                    var card = document.createElement('img');
-                    innerDiv.setAttribute('class', 'inner-div');
-                    greenDot.setAttribute('id', "gd_" + x + "_" + y);
-                    greenDot.setAttribute('class', 'green-dot');
-                    card.setAttribute('id', x + "_" + y);
-                    card.setAttribute('src', data[i].url);
-                    card.addEventListener('click', click_image);
-                    innerDiv.appendChild(greenDot);
-                    innerDiv.appendChild(card);
-                    outerDiv.appendChild(innerDiv);
-                    i++
-                }                
-            }
-
-            $('.inner-div').width(innerDivWidth).height(innerDivWidth);
-            $('.badge').attr('done', 'false').addClass('bg-success').removeClass('text-dark badge-border');
-        });        
-    }
-
-    $('#shuffle').click(shuffle_cards) 
-
-    $(window).resize(set_grid_size);
+    $(window).resize(setGridSize);
 
     $('.badge').click(function(){
         var done = $(this).attr('done');
@@ -413,7 +406,6 @@ $(document).ready(function(){
             }
 
             if (bingo_done != 'true') {
-                //console.log("numbers_clicked=" + numbers_clicked.length)
                 if (numbers_clicked.length == 25) {
                     $('.green-dot').show();
                     $('#bingo').show();
@@ -422,20 +414,7 @@ $(document).ready(function(){
                     $('.bingo').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                     bingo_done = 'true';
                 }
-            }
-            //console.log("score=" + score)                   
-            //console.log("row_0=" + row_0);
-            //console.log("row_1=" + row_1);
-            //console.log("row_2=" + row_2);
-            //console.log("row_3=" + row_3);
-            //console.log("col_0=" + col_0);
-            //console.log("col_1=" + col_1);
-            //console.log("col_2=" + col_2);
-            //console.log("col_3=" + col_3);
-            //console.log("right_diagonal=" + right_diagonal);
-            //console.log("left_diagonal=" + left_diagonal);
-            //console.log("four_corners=" + four_corners);
-            //console.log("cross=" + cross);            
+            }           
         }
     }
 });
