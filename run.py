@@ -20,6 +20,8 @@ mongo = PyMongo(app)
 def index():
     if 'DEVELOPMENT' in os.environ:
         test = True
+    else:
+        test = False
     return render_template("index.html",
                            page_title="Marine(1)",
                            test=test)
@@ -29,6 +31,8 @@ def index():
 def page_2():
     if 'DEVELOPMENT' in os.environ:
         test = True
+    else:
+        test = False
     return render_template("page_2.html",
                            test=test,
                            page_title="Marine(2)")
@@ -38,9 +42,22 @@ def page_2():
 def test():
     if 'DEVELOPMENT' in os.environ:
         test = True
+    else:
+        test = False
     return render_template("test.html",
                            test=test,
                            page_title="test")
+
+
+@app.route("/drag_drop")
+def drag_drop():
+    if 'DEVELOPMENT' in os.environ:
+        test = True
+    else:
+        test = False
+    return render_template("drag-drop.html",
+                           test=test,
+                           page_title="Drag & Drop")
 
 
 if __name__ == "__main__":
