@@ -34,25 +34,35 @@
                         <a class="nav-link" href="{{ url_for('page_2') }}">Marine (2)</a>
                         {% if test == True %}
                         <a class="nav-link" href="{{ url_for('test') }}">Test</a>
+                        <a class="nav-link" href="{{ url_for('drag_drop') }}">Drag & Drop</a>
                         {% endif %}
                     {% elif page_title == 'Marine(2)' %}
                         <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine (1)</a>
                         <a class="nav-link active" href="{{ url_for('page_2') }}"><strong>Marine (2)</strong></a>
                         {% if test == True %}
                         <a class="nav-link" href="{{ url_for('test') }}">Test</a>
+                        <a class="nav-link" href="{{ url_for('drag_drop') }}">Drag & Drop</a>
+                        {% endif %}
+                    {% elif page_title == 'test' %}
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine (1)</a>
+                        <a class="nav-link" href="{{ url_for('page_2') }}">Marine (2)</a>
+                        {% if test == True %}
+                            <a class="nav-link active" href="{{ url_for('test') }}"><strong>Test</strong></a>
+                            <a class="nav-link" href="{{ url_for('drag_drop') }}">Drag & Drop</a>
                         {% endif %}
                     {% else %}
                         <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Marine (1)</a>
                         <a class="nav-link" href="{{ url_for('page_2') }}">Marine (2)</a>
                         {% if test == True %}
-                            <a class="nav-link active" href="{{ url_for('test') }}"><strong>Test</strong></a>
+                            <a class="nav-link" href="{{ url_for('test') }}">Test</a>
+                            <a class="nav-link active" href="{{ url_for('drag_drop') }}"><strong>Drag & Drop</strong></a>
                         {% endif %}
                     {% endif %}
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="flash-container">
         {% with messages = get_flashed_messages() %} 
             {% if messages %}
                 <ul class="flashes">

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<!-- import #zmmtg-root css 
+<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.0/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.0/css/react-select.css" />
+-->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+{% endblock %}
+{% block content %} 
+    <div class="container mt-1">
+        <div class="row">
+            <div class="col-8 col-lg-7 grid">               
+                <div class="outer-div">
+                          
+                </div>
+            </div>
+
+            <div class="col-4 col-lg-2">
+                <div class="badge bg-success horizontal mt-1">Horizontal line  --<span id="horizontal">(1)</span></div>
+                <div class="badge bg-success vertical">Vertical line  |<span id="vertical">(1)</span></div>
+                <div class="badge bg-success right_diagonal">Diagonal right  /<span id="right_diagonal">(3)</span></div>
+                <div class="badge bg-success left_diagonal">Diagonal left  \<span id="left_diagonal">(3)</span></div>
+                <div class="badge bg-success four_corners">4 corners  ::<span id="four_corners">(3)</span></div>
+                <div class="badge bg-success cross">X<span id="cross">(5)</span></div>
+                <div class="badge bg-success bingo">BINGO!<span id="bingo">(6)</span></div>
+                <div class="outer-score"><p id="score"></p></div>
+                <button id="shuffle" type="button" class="btn btn-danger my-1 w-100">Shuffle board</button>
+                <div id="div1"></div>
+                <div id="mix-cards" type="button" class="btn btn-danger my-1 w-100">Mix cards</div>
+            </div>
+            <div class="col-12 col-lg-3" id="zoom-col">
+                
+            </div>
+        </div>            
+    </div>
+
+<script src="{{ url_for('static', filename='js/test.js') }}"></script>
+<!-- import ZoomMtg dependencies -->
+<!--
+<script src="https://source.zoom.us/1.9.0/lib/vendor/react.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/react-dom.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/redux.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/redux-thunk.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/lodash.min.js"></script>
+-->
+
+<!-- import ZoomMtg -->
+<!--
+<script src="https://source.zoom.us/zoom-meeting-1.9.0.min.js"></script>
+-->
+<!-- import local .js file -->
+<!--
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+-->
+{% endblock %}
