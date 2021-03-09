@@ -12,5 +12,7 @@
         <p class="draggable" draggable="true">3</p>
         <p class="draggable" draggable="true">4</p>
     </div>
+{% endblock %}
+{% block extra_js %}
     <script src="{{ url_for('static', filename='js/drag-drop.js') }}"></script>
 {% endblock %}
