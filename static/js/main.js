@@ -82,15 +82,17 @@ $(document).ready(function(){
         if (width < height) {
             gridSize = width;
         } else {
+            console.log("else")
             gridSize = height;
         }
+        
         $('.outer-div').height(gridSize).width(gridSize);
         innerDivSize = ((gridSize) / 5)
         $('.inner-div').height(innerDivSize).width(innerDivSize); 
         var txt = "";
-        txt += "Width: " + $("body").outerWidth() + "</br>";
-        txt += "Height: " + $("body").outerHeight() + "</br>";
-        txt += "grid: " + width;
+        txt += "Width: " + width + "</br>";
+        txt += "Height: " + height + "</br>";
+        txt += "grid: " + gridSize + "</br>";
         $("#div1").html(txt);
     }
 
