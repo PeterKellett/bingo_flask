@@ -44,7 +44,6 @@ $(document).ready(function(){
  
 //Functions
     async function getCards() {
-        console.log("getCards");
         const response = await fetch("./static/data/marine.json");
         cards = await response.json();
         mixCards(cards);
@@ -79,10 +78,13 @@ $(document).ready(function(){
     function setGridSize() {
         var width = $(".grid").width();
         var height = $(window).outerHeight() - 50;
+        var bodyHeight = $("body").outerHeight();
+        if (bodyHeight > height) {
+            height += 50;
+        }
         if (width < height) {
             gridSize = width;
         } else {
-            console.log("else")
             gridSize = height;
         }
         
@@ -92,6 +94,7 @@ $(document).ready(function(){
         var txt = "";
         txt += "Width: " + width + "</br>";
         txt += "Height: " + height + "</br>";
+        txt += "bodyHeight: " + bodyHeight + "</br>";
         txt += "grid: " + gridSize + "</br>";
         $("#div1").html(txt);
     }
