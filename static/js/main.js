@@ -1,69 +1,9 @@
 $(document).ready(function(){
+//Declare Variables
     console.log("Document ready");
     var outerDiv = document.querySelector('.outer-div');
     var gridSize;
     var innerDivSize;
-    var cards = getCards();
-    
-
-    async function getCards() {
-        console.log("getCards");
-        const response = await fetch("./static/data/marine.json");
-        cards = await response.json();
-        mixCards(cards);
-    }
-    
-    function setGridSize() {
-        var width = $(".grid").width(); 
-        var height = $(window).outerHeight() - 50;
-        if (width < height) {
-            gridSize = width;
-        } else {
-            gridSize = height;
-        }
-        $('.outer-div').height(gridSize).width(gridSize);
-        innerDivSize = ((gridSize) / 5)
-        $('.inner-div').height(innerDivSize).width(innerDivSize); 
-        var txt = "";
-        txt += "Width: " + $("body").outerWidth() + "</br>";
-        txt += "Height: " + $("body").outerHeight() + "</br>";
-        txt += "grid: " + width;
-        $("#div1").html(txt);
-    }
-
-    $("#mix-cards").click(mixCards);
-
-    async function mixCards() {
-        $(".outer-div").empty();
-        console.log('mix cards');  
-        cards.sort(() => 0.5 - Math.random()); 
-        console.log(cards);  
-        i = 0; 
-        for (y = 0; y < 5; y++) {
-            for (x = 0; x < 5; x++) {
-                var innerDiv = document.createElement('div');
-                var greenDot = document.createElement('div');
-                var card = document.createElement('img');
-                innerDiv.setAttribute('class', 'inner-div');
-                greenDot.setAttribute('id', "gd_" + x + "_" + y);
-                greenDot.setAttribute('class', 'green-dot');
-                card.setAttribute('id', x + "_" + y);
-                card.setAttribute('src', cards[i].url);
-                card.addEventListener('click', click_image);
-                innerDiv.appendChild(greenDot);
-                innerDiv.appendChild(card);
-                outerDiv.appendChild(innerDiv);
-                i++
-                setGridSize();
-            }                
-        } 
-         
-        $('.badge').attr('done', 'false').addClass('bg-success').removeClass('text-dark badge-border');
-        setTimeout(function(){
-            $('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1613994754/bingo/falling_on_deaf_ears_ft8c3n.jpg')");
-        }, 1000);
-    }
-
     var row_0 = [];
     var row_1 = [];
     var row_2 = [];
@@ -80,7 +20,10 @@ $(document).ready(function(){
     var cross = [];
     var numbers_clicked = []; 
     var score = 0;   
-    $('#score').html(score);
+    var cards = getCards();
+
+//Function callers
+    $("#mix-cards").click(mixCards);
 
     $(window).resize(setGridSize);
 
@@ -99,6 +42,86 @@ $(document).ready(function(){
         $('.badge').removeClass('badge-border');
     })
  
+//Functions
+    async function getCards() {
+        console.log("getCards");
+        const response = await fetch("./static/data/marine.json");
+        cards = await response.json();
+        mixCards(cards);
+    }
+    
+    async function mixCards() {
+        $(".outer-div").empty();
+        cards.sort(() => 0.5 - Math.random()); 
+        console.log(cards);  
+        i = 0; 
+        for (y = 0; y < 5; y++) {
+            for (x = 0; x < 5; x++) {
+                var innerDiv = document.createElement('div');
+                var greenDot = document.createElement('div');
+                var card = document.createElement('img');
+                innerDiv.setAttribute('class', 'inner-div');
+                greenDot.setAttribute('id', "gd_" + x + "_" + y);
+                greenDot.setAttribute('class', 'green-dot');
+                card.setAttribute('id', x + "_" + y);
+                card.setAttribute('src', cards[i].url);
+                card.addEventListener('click', click_image);
+                innerDiv.appendChild(greenDot);
+                innerDiv.appendChild(card);
+                outerDiv.appendChild(innerDiv);
+                i++;
+            }                
+        } 
+        setGridSize();
+        emptyArrays();
+    }
+
+    function setGridSize() {
+        var width = $(".grid").width();
+        var height = $(window).outerHeight() - 50;
+        if (width < height) {
+            gridSize = width;
+        } else {
+            gridSize = height;
+        }
+        $('.outer-div').height(gridSize).width(gridSize);
+        innerDivSize = ((gridSize) / 5)
+        $('.inner-div').height(innerDivSize).width(innerDivSize); 
+        var txt = "";
+        txt += "Width: " + $("body").outerWidth() + "</br>";
+        txt += "Height: " + $("body").outerHeight() + "</br>";
+        txt += "grid: " + width;
+        $("#div1").html(txt);
+    }
+
+    function emptyArrays() {
+        score = 0; 
+        $('#score').html(score);
+        $('.badge').attr('done', 'false').addClass('bg-success').removeClass('text-dark badge-border');
+        $('#horizontal').hide();
+        $('#vertical').hide();
+        $('#left_diagonal').hide();
+        $('#right_diagonal').hide();
+        $('#four_corners').hide();
+        $('#cross').hide();
+        $('#bingo').hide();
+        row_0 = [];
+        row_1 = [];
+        row_2 = [];
+        row_3 = [];
+        row_4 = [];
+        col_0 = [];
+        col_1 = [];
+        col_2 = [];
+        col_3 = [];
+        col_4 = [];
+        right_diagonal = [];
+        left_diagonal = [];
+        four_corners = [];
+        cross = [];
+        numbers_clicked = []; 
+    }
+
     function click_image() {
         $('.badge').removeClass('badge-border');
         $('.green-dot').hide();
@@ -406,6 +429,7 @@ $(document).ready(function(){
             }
 
             if (bingo_done != 'true') {
+                //console.log("numbers_clicked=" + numbers_clicked.length)
                 if (numbers_clicked.length == 25) {
                     $('.green-dot').show();
                     $('#bingo').show();
@@ -414,7 +438,7 @@ $(document).ready(function(){
                     $('.bingo').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                     bingo_done = 'true';
                 }
-            }           
+            }         
         }
     }
 });

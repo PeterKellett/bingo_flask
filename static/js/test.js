@@ -12,33 +12,8 @@ $(document).ready(function(){
         cards = await response.json();
         //setGridSize();
         mixCards(cards);
-        anotherfunction();
     }
     
-    function setGridSize() {
-        var width = $(".grid").width(); //NOTE: This is not reflected when the window resizes
-        var height = $(window).outerHeight() - 50;
-        if (width < height) {
-            gridSize = width;
-        } else {
-            gridSize = height;
-        }
-        $('.outer-div').height(gridSize).width(gridSize);
-        innerDivSize = ((gridSize) / 5)
-        $('.inner-div').height(innerDivSize).width(innerDivSize); 
-        var txt = "";
-        txt += "Width: " + $("body").outerWidth() + "</br>";
-        txt += "Height: " + $("body").outerHeight() + "</br>";
-        txt += "grid: " + width;
-        $("#div1").html(txt);
-    }
-
-    $("#mix-cards").click(mixCards);
-
-    function anotherfunction() {
-        console.log("anotherfunction");
-    }
-
     async function mixCards() {
         $(".outer-div").empty();
         console.log('mix cards');  
@@ -59,18 +34,61 @@ $(document).ready(function(){
                 innerDiv.appendChild(greenDot);
                 innerDiv.appendChild(card);
                 outerDiv.appendChild(innerDiv);
-                i++
-                setGridSize();
+                i++;
                 //await sleep();
                 //console.log("sleep")
             }                
         } 
+        setGridSize();
+        emptyArrays();
          
-        $('.badge').attr('done', 'false').addClass('bg-success').removeClass('text-dark badge-border');
         setTimeout(function(){
             $('.outer-div').css("background-image", "url('https://res.cloudinary.com/dfboxofas/image/upload/v1613994754/bingo/falling_on_deaf_ears_ft8c3n.jpg')");
         }, 1000);
     }
+
+    function setGridSize() {
+        var width = $(".grid").width(); //NOTE: This is not reflected when the window resizes
+        var height = $(window).outerHeight() - 50;
+        if (width < height) {
+            gridSize = width;
+        } else {
+            gridSize = height;
+        }
+        $('.outer-div').height(gridSize).width(gridSize);
+        innerDivSize = ((gridSize) / 5)
+        $('.inner-div').height(innerDivSize).width(innerDivSize); 
+        var txt = "";
+        txt += "Width: " + $("body").outerWidth() + "</br>";
+        txt += "Height: " + $("body").outerHeight() + "</br>";
+        txt += "grid: " + width;
+        $("#div1").html(txt);
+    }
+
+    function emptyArrays() {
+        console.log("emptyArrays")
+        score = 0; 
+        $('#score').html(score);
+        $('.badge').attr('done', 'false').addClass('bg-success').removeClass('text-dark badge-border');
+        row_0 = [];
+        row_1 = [];
+        row_2 = [];
+        row_3 = [];
+        row_4 = [];
+        col_0 = [];
+        col_1 = [];
+        col_2 = [];
+        col_3 = [];
+        col_4 = [];
+        right_diagonal = [];
+        left_diagonal = [];
+        four_corners = [];
+        cross = [];
+        numbers_clicked = []; 
+    }
+
+    $("#mix-cards").click(mixCards);
+
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -92,8 +110,6 @@ $(document).ready(function(){
     var numbers_clicked = []; 
     var score = 0;   
     $('#score').html(score);
-    //set_grid_size();
-    //shuffle_cards ();
     //const zoomMeeting = document.getElementById("zmmtg-root")
     //console.log("const zoom")
     //document.getElementById("zoom-col").appendChild(zoomMeeting);

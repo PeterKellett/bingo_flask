@@ -2,35 +2,10 @@ body {
     max-height: 100vH;
 }
 
-img {   
-    margin: 0px;   
-}
-
-.background {
-    background-image: url('https://res.cloudinary.com/dfboxofas/image/upload/v1612954661/bingo/IMG_20200817_201743_yfl4xy.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-.small-image {
-    margin: 5px;
-    height: 125px;
-    width: 125px;
-}
-
-.red-border {
-    border: 2px solid red; 
-}
-
-.green-border {
-    border: 2px solid green;
-}
-
 .badge {
     border: 2px solid #19875400;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 5px;
     background-color: #cccccc;
 }

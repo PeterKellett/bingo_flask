@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/drag-drop.css') }}">
+{% endblock %}
+{% block content %} 
+    <h1>{{ page_title }}</h1>
+    <div class="container">
+        <p class="draggable" draggable="true">1</p>
+        <p class="draggable" draggable="true">2</p>
+    </div>
+    <div class="container">
+        <p class="draggable" draggable="true">3</p>
+        <p class="draggable" draggable="true">4</p>
+    </div>
+    <script src="{{ url_for('static', filename='js/drag-drop.js') }}"></script>
+{% endblock %}
