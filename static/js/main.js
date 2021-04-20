@@ -18,6 +18,7 @@ $(document).ready(function(){
     var left_diagonal = [];
     var four_corners = [];
     var cross = [];
+    var plus = [];
     var numbers_clicked = []; 
     var score = 0;   
     var cards = getCards();
@@ -109,6 +110,7 @@ $(document).ready(function(){
         $('#right_diagonal').hide();
         $('#four_corners').hide();
         $('#cross').hide();
+        $('#plus').hide();
         $('#bingo').hide();
         row_0 = [];
         row_1 = [];
@@ -124,6 +126,7 @@ $(document).ready(function(){
         left_diagonal = [];
         four_corners = [];
         cross = [];
+        plus = [];
         numbers_clicked = []; 
     }
 
@@ -136,6 +139,7 @@ $(document).ready(function(){
         left_diagonal_done = $('.left_diagonal').attr('done');
         four_corners_done = $('.four_corners').attr('done');
         cross_done = $('.cross').attr('done');
+        plus_done = $('.plus').attr('done');
         bingo_done = $('.bingo').attr('done');
         row_0 = [];
         row_1 = [];
@@ -151,6 +155,7 @@ $(document).ready(function(){
         left_diagonal = [];
         four_corners = [];
         cross = [];
+        plus = [];
         var clicked_before = $(this).attr("clicked_before");
         var image_clicked = $(this).attr("id");
         id = image_clicked.split("_");
@@ -188,6 +193,9 @@ $(document).ready(function(){
                     four_corners.push(1);
                     cross.push(1);
                 }
+                if (value[0] == 2) {
+                    plus.push(1);
+                }
             }
             //Row 1                   
             if (value[1] == 1) {
@@ -195,6 +203,9 @@ $(document).ready(function(){
                 if (value[0] == 1) {
                     left_diagonal.push(1);
                     cross.push(1);
+                }
+                if (value[0] == 2) {
+                    plus.push(1);
                 }
                 if (value[0] == 3) {
                     right_diagonal.push(1);
@@ -204,6 +215,7 @@ $(document).ready(function(){
             //Row 2                   
             if (value[1] == 2) {
                 row_2.push(1);
+                plus.push(1);
                 if (value[0] == 2) {
                     left_diagonal.push(1);
                     right_diagonal.push(1);
@@ -221,6 +233,9 @@ $(document).ready(function(){
                     right_diagonal.push(1);
                     cross.push(1);
                 }
+                if (value[0] == 2) {
+                    plus.push(1);
+                }
             }
             //row 4
             if (value[1] == 4) {
@@ -234,6 +249,9 @@ $(document).ready(function(){
                     right_diagonal.push(1);
                     cross.push(1);
                     four_corners.push(1);
+                }
+                if (value[0] == 2) {
+                    plus.push(1);
                 }
             }
             //Column 0                   
@@ -427,9 +445,27 @@ $(document).ready(function(){
                     $('#gd_1_3').show();
                     $('#gd_0_4').show();
                     $('#cross').show();
-                    score += 5;
+                    score += 4;
                     $('#score').html(score);
                     $('.cross').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
+                }
+            }
+
+            if (plus_done != 'true') {
+                if (plus.length == 9) {
+                    $('#gd_0_2').show();
+                    $('#gd_1_2').show();
+                    $('#gd_2_2').show();
+                    $('#gd_3_2').show();
+                    $('#gd_4_2').show();
+                    $('#gd_2_0').show();
+                    $('#gd_2_1').show();
+                    $('#gd_2_3').show();
+                    $('#gd_2_4').show();
+                    $('#plus').show();
+                    score += 4;
+                    $('#score').html(score);
+                    $('.plus').attr('done', 'true').removeClass('bg-success').addClass('badge-border text-dark');
                 }
             }
 
